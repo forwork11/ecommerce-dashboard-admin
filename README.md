@@ -1,5 +1,8 @@
 # ecommerce-dashboard-admin
 
+
+DEMO: [https://ecommerce-admin--demo.herokuapp.com](https://ecommerce-admin--demo.herokuapp.com)
+
 ### Open 2 terminals, and 
 
 ### `cd service` in first terminal
@@ -15,7 +18,7 @@ Running in [http://localhost:3001](http://localhost:3001)
 
 This terminal is for frontend.
 
-### `npm start` in last terminal
+### `npm run start:dev` in last terminal
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
