@@ -7,7 +7,7 @@ import { ProductColumns } from '../../constants/tableColumns';
 import { useDispatch } from 'react-redux';
 import './Home.less';
 import PopupModal from '../../components/PopupModal';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, UploadOutlined, LogoutOutlined } from '@ant-design/icons';
 import {
   Col, 
   Row,
@@ -21,8 +21,10 @@ import {
 } from 'antd';
 import { deleteProduct, updateProduct, getProducts, addProduct } from '../../services/productService';
 import { useCallback } from 'react';
+import { logout } from '../../utils/utils';
 import { closeModal, openModal } from '../../actions/Setting';
 import TableSearch from '../../components/TableSearch';
+import ROUTES from '../../constants/routes';
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 const { confirm } = Modal;
@@ -51,6 +53,7 @@ const Home = () => {
 
   const addProd = () => {
     setIsEdit(false);
+    form.setFieldsValue(setProductValue(null));
     dispatch(openModal());
   }
 
@@ -119,7 +122,21 @@ const Home = () => {
   return (
     <Layout>
       <LeftSider
-      name="John Doe" />
+      name="John Doe"
+      items={[
+        {
+          key: '1',
+          label: 'Product',
+          icon: React.createElement(UploadOutlined),
+          path: ROUTES.HOME,
+        },
+        {
+          key: '2',
+          label: 'Logout',
+          icon: React.createElement(LogoutOutlined),
+          onClick: () => logout()
+        }
+      ]} />
       <Layout>
         <Header
           className="site-layout-sub-header-background"
@@ -139,12 +156,12 @@ const Home = () => {
               minHeight: 360,
             }}
           >
-            <Row>
-              <Col span={8}>
+            <Row style={{ maxWidth: '1300px' }}>
+              <Col flex="auto">
                 <Title level={3}>Products</Title>
               </Col>
-              <Col span={8} offset={8}>
-                <Button className="f-right" type="primary" onClick={addProd}>Add Product</Button>
+              <Col flex="0 1 110px">
+                <Button type="primary" onClick={addProd}>Add Product</Button>
               </Col>
             </Row>
             <Row>
@@ -208,7 +225,7 @@ const Home = () => {
               })]}>
               <Input />
             </Form.Item>
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Form.Item wrapperCol={{ offset: 5, span: 14 }}>
               <Button type="primary" htmlType="submit">
                 Save
               </Button>

@@ -18,7 +18,7 @@ const TokenSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
-});
+}, { timestamps: true });
 
 const Token = mongoose.model('Token', TokenSchema);
 module.exports = Token;

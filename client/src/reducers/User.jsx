@@ -3,10 +3,10 @@ import USER from "../constants/states/User";
 
 const User = (state=USER, action) => {
     switch (action.type) {
-        case ACTIONS.USER.AUTH:
+        case ACTIONS.USER:
             return {
                 ...state,
-                auth: action.payload
+                ...action.payload
             };
         default:
             return state;

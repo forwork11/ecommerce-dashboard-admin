@@ -1,6 +1,14 @@
-import { useSelector } from "react-redux";
+import ROUTES from "../constants/routes";
+import STORAGE from "../constants/storage";
 
-export const useAuth = () => useSelector(state => state.User.auth);
+export const getAuth = () => getStorage(STORAGE.AUTH);
+
+export const setAuth = (value) => setStorage(STORAGE.AUTH, value);
+
+export const logout = () => {
+    delStorage(STORAGE.AUTH);
+    window.location = ROUTES.LOGIN;
+}
 
 export const getStorage = (key) => JSON.parse(localStorage.getItem(key));
 

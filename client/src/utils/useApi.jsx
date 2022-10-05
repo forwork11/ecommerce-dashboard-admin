@@ -1,7 +1,8 @@
+import { message } from 'antd';
 import axios from 'axios';
 import API from '../constants/API';
-import STORAGE from '../constants/storage';
-import { getStorage } from './utils';
+import MESSAGE from '../constants/message';
+import { getAuth, logout } from './utils';
 
 const axiosInstance = axios.create({
     baseURL: API.BASE,
@@ -11,11 +12,20 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use(config => {
-    const auth = getStorage(STORAGE.AUTH);
+    const auth = getAuth();
     if (auth?.token) {
         config.headers.Authorization = `Bearer ${auth.token}`
     }
     return config;
+})
+
+axiosInstance.interceptors.response.use(res => res, err => {
+    if (err.response?.status === 401 && 
+        err.response?.data === MESSAGE.INVALID_TOKEN) {
+            message.error(err.response.data);
+            return logout();
+        }
+    return err.response;
 })
 
 export { axiosInstance };

@@ -1,36 +1,19 @@
-import { UploadOutlined, LogoutOutlined } from '@ant-design/icons';
 import React from 'react';
 import './LeftSider.less';
 import { Layout, Menu } from 'antd';
-import { useDispatch } from 'react-redux';
-import { delStorage } from '../../utils/utils';
-import { storeAuth } from '../../actions/User';
-import STORAGE from '../../constants/storage';
-import ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
 const { Sider } = Layout;
 
 const LeftSider = ({
     name,
+    items
 }) => {
-  const dispatch = useDispatch();
-  const items = [
-    {
-      key: '1',
-      label: 'Product',
-      icon: React.createElement(UploadOutlined),
-      onClick: () => window.location = ROUTES.PRODUCTS
-    },
-    {
-      key: '2',
-      label: 'Logout',
-      icon: React.createElement(LogoutOutlined),
-      onClick: () => {
-        dispatch(storeAuth(null));
-        delStorage(STORAGE.AUTH);
-        window.location = ROUTES.LOGIN
-      }
-    }
-  ];
+  const content = (icon, label) => (
+    <>
+    {icon}
+    <span>{label}</span>
+    </>
+  )
 
   return (
       <Sider
@@ -50,8 +33,18 @@ const LeftSider = ({
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['4']}
-          items={items}
-        />
+        >
+          {items.map(item => (
+            <Menu.Item key={item.key}>
+              {item.path && <Link to={item.path}>
+                {content(item.icon, item.label)}
+              </Link>}
+              {item.onClick && <div onClick={item.onClick}>
+                {content(item.icon, item.label)}
+              </div>}
+            </Menu.Item>
+          ))}
+        </Menu>
       </Sider>
   )
 };

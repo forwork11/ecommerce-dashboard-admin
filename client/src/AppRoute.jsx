@@ -9,7 +9,7 @@ const AppRoute = () => (
     <Routes>
         <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.PRODUCTS} />} />
         <Route path={ROUTES.PRODUCTS} element={<RequireAuth element={<Home />} />} />
-        <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.LOGIN} element={<RequireAuth element={<Login />} isLogin={true} />} />
     </Routes>
 );
 

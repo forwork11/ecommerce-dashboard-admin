@@ -1,6 +1,6 @@
 import ACTIONS from "../constants/actions";
 
-export const storeAuth = (payload) => ({
-    type: ACTIONS.USER.AUTH,
+export const storeUser = (payload) => ({
+    type: ACTIONS.USER,
     payload
 });

@@ -1,7 +1,5 @@
 const ACTIONS = {
-    USER: {
-        AUTH: 'AUTH',
-    },
+    USER: 'USER',
     SETTING: {
         MODAL: {
             OPEN: 'MODAL_OPEN',

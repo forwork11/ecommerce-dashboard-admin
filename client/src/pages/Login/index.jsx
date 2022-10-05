@@ -8,8 +8,7 @@ import {
   message
 } from 'antd';
 import { login } from '../../services/loginService';
-import { setStorage } from '../../utils/utils';
-import STORAGE from '../../constants/storage';
+import { setAuth } from '../../utils/utils';
 import ROUTES from '../../constants/routes';
 const { Header, Content } = Layout;
 
@@ -17,7 +16,7 @@ const Login = () => {
   const onFinish = async (values) => {
     const result = await login(values);
     if (result.status === 200) {
-      setStorage(STORAGE.AUTH, result.data.auth);
+      setAuth(result.data.auth);
       message.success("Success!");
       window.location = ROUTES.HOME;
     }else{
@@ -40,7 +39,7 @@ const Login = () => {
         />
         <Content
           style={{
-            margin: '24px 16px',
+            margin: '48px 16px',
           }}
         >
             <Form
