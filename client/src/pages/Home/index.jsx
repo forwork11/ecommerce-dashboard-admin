@@ -120,7 +120,7 @@ const Home = () => {
   }
 
   return (
-    <Layout>
+    <Layout className="mh-100">
       <LeftSider
       name="John Doe"
       items={[
