@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import ROUTES from '../../constants/routes';
-import { getAuth } from '../../utils/utils';
+import { getAuth } from '../../utils/auth';
 
 const RequireAuth = ({
     element,

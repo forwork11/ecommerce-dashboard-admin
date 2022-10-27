@@ -3,7 +3,7 @@ require('./utils/db')
 const express = require('express')
 const cors = require('cors')
 const auth = require('./middleware/auth');
-const API = require('./constants/API')
+const API = require('./constants/api')
 const productsRoute = require('./routes/Products')
 const loginRoute = require('./routes/Login')
 const app = express()

@@ -1,4 +1,7 @@
 const USER = {
+    name: '',
+    email: '',
+    roles: [],
     auth: {},
 };
 

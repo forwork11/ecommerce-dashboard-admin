@@ -1,8 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios';
-import API from '../constants/API';
-import MESSAGE from '../constants/message';
-import { getAuth, logout } from './utils';
+import API from '../constants/api';
+import { getAuth, logout } from './auth';
 
 const axiosInstance = axios.create({
     baseURL: API.BASE,
@@ -21,7 +20,7 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(res => res, err => {
     if (err.response?.status === 401 && 
-        err.response?.data === MESSAGE.INVALID_TOKEN) {
+        err.response?.data === 'invalid_token') {
             message.error(err.response.data);
             return logout();
         }

@@ -1,5 +1,5 @@
-import API from '../constants/API';
-import { axiosInstance } from '../utils/useApi';
+import API from '../constants/api';
+import { axiosInstance } from '../utils/api';
 
 export const login = async (payload) => {
     try{

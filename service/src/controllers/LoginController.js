@@ -25,7 +25,7 @@ module.exports = {
                         { user_id: user._id, email },
                         process.env.TOKEN_KEY,
                         {
-                            expiresIn: "1h"
+                            expiresIn: "1d"
                         }
                     );
                     const token = new Token({
@@ -36,6 +36,7 @@ module.exports = {
                     })
                     token.save()
                     .then(result => res.status(200).json({
+                        name: user.name,
                         email: user.email,
                         auth: {
                             token: result.token

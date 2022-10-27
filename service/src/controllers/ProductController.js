@@ -1,4 +1,4 @@
-const API = require('../constants/API');
+const API = require('../constants/api');
 const Product = require('../models/Product');
 
 module.exports = {

@@ -1,7 +1,7 @@
-import ACTIONS from "../constants/actions";
-import USER from "../constants/states/User";
+import ACTIONS from "../constants/actions/user";
+import USER from "../constants/states/user";
 
-const User = (state=USER, action) => {
+const user = (state=USER, action) => {
     switch (action.type) {
         case ACTIONS.USER:
             return {
@@ -13,4 +13,4 @@ const User = (state=USER, action) => {
     }
 };
 
-export default User;
+export default user;
